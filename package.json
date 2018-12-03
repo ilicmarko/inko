@@ -1,6 +1,6 @@
 {
   "name": "@weareneopix/inko",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple CLI to help you with image processing.",
   "main": "index.js",
   "bin": {
@@ -12,8 +12,8 @@
     "ci": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/ilicmarko/inko"
+    "type": "git",
+    "url": "https://github.com/ilicmarko/inko"
   },
   "keywords": [
     "cli",
