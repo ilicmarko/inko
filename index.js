@@ -16,6 +16,11 @@ if (!helpers.checkIfPathValid(argv.path)) {
   return
 }
 
+if (argv.borderSize === undefined && argv.borderColor !== undefined ) {
+  console.log(chalk.yellow(`Do not waste Inko's time. He can not put 0px borders, anyways nice color: ${argv.borderColor}`))
+  return;
+}
+
 if (argv.borderSize === undefined && argv.borderColor === undefined ) {
   console.log(chalk.yellow(`It's not nice to waste Inko's time. He is a busy man`))
   return;
