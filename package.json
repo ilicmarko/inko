@@ -11,8 +11,18 @@
     "report": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "ci": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
   },
-  "repository": "git@github.com:ilicmarko/inko.git",
-  "author": "Maverick <ilic.marko.05@live.com>",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ilicmarko/inko"
+  },
+  "keywords": [
+    "cli",
+    "image",
+    "border",
+    "shadow",
+    "borderradius"
+  ],
+  "author": "Maverick <ilic.marko.05@live.com> (https://ilic.ninja)",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
