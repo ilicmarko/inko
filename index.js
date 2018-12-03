@@ -29,9 +29,19 @@ if (argv.borderSize === undefined && argv.borderColor === undefined ) {
 let borderColor = '#222'
 
 if (argv.borderColor !== undefined) {
-  borderColor = argv.borderColor
+  try {
+    if (helpers.isValidColor(argv.borderColor)) {
+      borderColor = argv.borderColor
+    } else {
+      console.log(chalk.red(`Provided border color '${argv.borderColor}' is not a valid.`));
+      return ;
+    }
+  } catch (e) {
+    console.log(chalk.red(e.message));
+    return ;
+  }
 } else {
-  ora().warn(`Border color not provided falling back to default '${borderColor}'.`)
+  console.log(chalk.yellow(`Border color not provided falling back to default '${borderColor}'.`));
 }
 
 const loadingFiles = ora('Loading files').start();
