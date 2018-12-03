@@ -7,7 +7,8 @@
     "inko": "index.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test --reporter spec"
+    "test": "./node_modules/.bin/mocha test --reporter spec",
+    "ci": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
   },
   "repository": "git@github.com:ilicmarko/inko.git",
   "author": "Maverick <ilic.marko.05@live.com>",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0"
   }
 }
