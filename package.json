@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha test --reporter spec",
+    "report": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "ci": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec"
   },
   "repository": "git@github.com:ilicmarko/inko.git",

@@ -31,6 +31,10 @@ describe('Path utils', () => {
     it('should throw and an error if `Buffer` or `Uint8Array` not provided', () => {
       expect(() => helpers.isImage('fixture/valid.png')).to.throw(TypeError)
     });
+    it('should return `false` if `Buffer` is empty', () => {
+      const emptyBuff = new Buffer('');
+      expect(helpers.isImage(emptyBuff)).to.be.false;
+    });
     it('should return `true` if `jpg` is valid', () => {
       const buffer = fs.readFileSync('fixture/valid.jpg');
       expect(helpers.isImage(buffer)).to.be.true;
