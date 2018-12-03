@@ -12,21 +12,21 @@ const argv = require('yargs').command('convert <path> [borderSize] [borderColor]
   .help().argv;
 
 if (!helpers.checkIfPathValid(argv.path)) {
-  console.log(chalk.red(`Trying to fool Inko is not a smart move. Inko knows his paths, and '${argv.path}' is not a valid one!`))
-  return
+  console.log(chalk.red(`Trying to fool Inko is not a smart move. Inko knows his paths, and '${argv.path}' is not a valid one!`));
+  return;
 }
 
 if (argv.borderSize === undefined && argv.borderColor !== undefined ) {
-  console.log(chalk.yellow(`Do not waste Inko's time. He can not put 0px borders, anyways nice color: ${argv.borderColor}`))
+  console.log(chalk.yellow(`Do not waste Inko's time. He can not put 0px borders, anyways nice color: ${argv.borderColor}`));
   return;
 }
 
 if (argv.borderSize === undefined && argv.borderColor === undefined ) {
-  console.log(chalk.yellow(`It's not nice to waste Inko's time. He is a busy man`))
+  console.log(chalk.yellow(`It's not nice to waste Inko's time. He is a busy man`));
   return;
 }
 
-let borderColor = '#222'
+let borderColor = '#222';
 
 if (argv.borderColor !== undefined) {
   try {
@@ -49,27 +49,27 @@ let processingFile = ora('Processing file');
 
 glob(argv.path, function(err, files) {
   if (err) {
-    loadingFiles.fail()
-    console.error(err)
+    loadingFiles.fail();
+    console.error(err);
   } else {
-    loadingFiles.succeed('Files successfully loaded')
+    loadingFiles.succeed('Files successfully loaded');
     files.forEach(file => {
       sizeOf(file, (err, dimensions) => {
-        processingFile.start(`Processing file '${file}'`)
-        if (err) console.error(err)
+        processingFile.start(`Processing file '${file}'`);
+        if (err) console.error(err);
 
         if (argv.borderSize !== undefined) {
-          const pad = argv.borderSize
+          const pad = argv.borderSize;
 
           fs.ensureDir('out').then(() => {
             sharp(file)
               .extend({top: pad, left: pad, bottom: pad, right: pad, background: borderColor })
               .toFile(`out/${file}`)
               .then(() => {
-                processingFile.succeed(`File '${file}' successfully converted`)
+                processingFile.succeed(`File '${file}' successfully converted`);
               })
               .catch(e => {
-                processingFile.fail(`File '${file}' FAILED to convert`)
+                processingFile.fail(`File '${file}' FAILED to convert`);
               });
           })
         }
