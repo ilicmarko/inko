@@ -1,6 +1,6 @@
 {
   "name": "@weareneopix/inko",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple CLI to help you with image processing.",
   "main": "index.js",
   "bin": {
