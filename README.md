@@ -43,6 +43,18 @@ default to `#222222`.
 
 Inko will output the image/s in the `./out/` folder
 
+### Example
+
+One file:
+```bash
+inko convert "myImage.png" --borderSize=10 --borderColor="#333"
+```
+
+Glob:
+```bash
+inko convert "*.jpg" --borderSize=10
+```
+
 ## Supported formats
 
 Inko knows most common image formats like:
