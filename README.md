@@ -9,4 +9,50 @@
 
 ## Introducing
 
-**Inko is like** a CLI made to help you with simple image manipulation. Inko hates when there is a white image on a white background, he will pass the provided images through his strong hands and stylize them.
+**Inko is like** a CLI made to help you with simple image manipulation. Inko hates when there is a white image on a
+white background, he will pass the provided images through his strong hands and stylize them.
+
+## Why?
+
+Sometimes you have an image with a same background as the site you are posting it to. For that reason you want to add a
+border around your image, for it to pop.
+
+## Installation
+
+When you have `node` and `npm` installed, install the module globally.
+
+```bash
+npm i  -g @weareneopix/inko
+# OR
+yarn global add @weareneopix/inko
+```
+
+## Usage
+
+Inko has one simple command called `convert`.
+
+```bash
+inko convert <path> [borderSize] [borderColor]
+```
+
+- `<path>` - is required and can be either an image file ([check supported formats](#supported-formats)) or glob.
+- `[borderSize]` - is optional its value must be a number. It is the width of the
+border in **pixels**.
+- `[borderColor]` - is optional its value must be valid HEX color. If not provided it will
+default to `#222222`. 
+
+Inko will output the image/s in the `./out/` folder
+
+## Supported formats
+
+Inko knows most common image formats like:
+- JPG/JPEG
+- PNG
+- WEBP
+
+## TODO
+
+- [ ] Option to set output folder
+- [ ] Add border radius
+- [ ] Add shadow
+- [ ] Smart convert option (convert to JPG or PNG)
