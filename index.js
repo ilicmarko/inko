@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-const fs = require('fs-extra')
+const fs = require('fs-extra');
 const sharp = require('sharp');
-const sizeOf = require('image-size')
+const sizeOf = require('image-size');
 const glob = require('glob');
 const chalk = require('chalk');
-const ora = require('ora')
+const ora = require('ora');
 
-const helpers = require('./lib/helper')
+const helpers = require('./lib/helper');
 
 const argv = require('yargs').command('convert <path> [borderSize] [borderColor]', 'Convert images')
   .help().argv;
