@@ -26,6 +26,11 @@ if (argv.borderSize === undefined && argv.borderColor === undefined ) {
   return;
 }
 
+if (!Number.isInteger(argv.borderSize)) {
+  console.log(chalk.red(`Provided border size '${typeof argv.borderSize}' is not a type integer.`));
+  return;
+}
+
 let borderColor = '#222';
 
 if (argv.borderColor !== undefined) {
