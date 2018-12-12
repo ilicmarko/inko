@@ -18,11 +18,11 @@ describe('Path utils', () => {
       expect(res).to.be.true;
     });
     it('should return `true` if glob is valid', () => {
-      const res = helpers.checkIfPathValid('**/.jpg')
+      const res = helpers.checkIfPathValid('**/.jpg');
       expect(res).to.be.true;
     });
     it('should return `false` if path is invalid', () => {
-      const res = helpers.checkIfPathValid('marko')
+      const res = helpers.checkIfPathValid('marko');
       expect(res).to.be.false;
     })
   });
@@ -67,7 +67,7 @@ describe('Path utils', () => {
       const buffer = fs.readFileSync('fixture/invalid.webp');
       expect(helpers.isImage(buffer)).to.be.false;
     });
-  })
+  });
 
   describe('Color validation', () => {
     it('should throw `TypeError` if parameter is not a string', () => {
@@ -123,5 +123,25 @@ describe('Path utils', () => {
         expect(helpers.isValidColor(color)).to.be.true;
       });
     })
-  })
-})
+  });
+
+  describe('Strip file extension', () => {
+    it('should throw `TypeError` if parameter is not a string', () => {
+      expect(() => helpers.stripExtension(null)).to.throw(TypeError);
+
+      expect(() => helpers.stripExtension(undefined)).to.throw(TypeError);
+
+      expect(() => helpers.stripExtension(Object())).to.throw(TypeError);
+
+      expect(() => helpers.stripExtension(Number())).to.throw(TypeError);
+
+      expect(() => helpers.stripExtension(Boolean())).to.throw(TypeError);
+    });
+    it('should return filename without extension', () => {
+      const file = 'neopix';
+      const fileExtension = 'jpg';
+      const filename = `${file}.${fileExtension}`;
+      expect(helpers.stripExtension(filename)).to.equal(file)
+    })
+  });
+});
