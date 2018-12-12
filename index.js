@@ -75,10 +75,15 @@ glob(argv.path, function(err, files) {
           pad = 0;
         }
 
+        let shadow;
         let roundedCorners;
+        let fileName = file;
 
         if (argv.borderRadius !== undefined) {
+          const name = helpers.stripExtension(file);
           borderColor = {r: 0, g: 0, b: 0, alpha: 0};
+          fileName = `${name}.png`;
+
           roundedCorners = Buffer.from(
             `<svg><rect x="0" y="0" width="${dimensions.width}" height="${dimensions.height}" rx="${argv.borderRadius}" ry="${argv.borderRadius}"/></svg>`
           );
@@ -91,8 +96,9 @@ glob(argv.path, function(err, files) {
         fs.ensureDir('out').then(() => {
           sharp(file)
             .extend({top: pad, left: pad, bottom: pad, right: pad, background: borderColor })
+            .overlayWith(shadow)
             .overlayWith(roundedCorners, { cutout: true })
-            .toFile(`out/${file}`)
+            .toFile(`out/${fileName}`)
             .then(() => {
               processingFile.succeed(`File '${file}' successfully converted`);
             })
