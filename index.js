@@ -84,6 +84,10 @@ glob(argv.path, function(err, files) {
           borderColor = {r: 0, g: 0, b: 0, alpha: 0};
           fileName = `${name}.png`;
 
+          if (argv.borderSize !== undefined) {
+            console.log(chalk.yellow('Currently adding a border to an image that has border-radius is not supported.'))
+          }
+
           roundedCorners = Buffer.from(
             `<svg><rect x="0" y="0" width="${dimensions.width}" height="${dimensions.height}" rx="${argv.borderRadius}" ry="${argv.borderRadius}"/></svg>`
           );
